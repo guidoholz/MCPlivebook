@@ -1,0 +1,20 @@
+services:
+  livebook:
+    build: .
+    container_name: livebook
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./notebooks:/data/notebooks
+    environment:
+      - LIVEBOOK_NODE=livebook@127.0.0.1
+      - LIVEBOOK_COOKIE=secret
+      - LIVEBOOK_TOKEN_ENABLED=false
+      - LIVEBOOK_AUTOSAVE_PATH=none
+    command: livebook
+    networks:
+      - livebook-net
+
+networks:
+  livebook-net:
+    driver: bridge
