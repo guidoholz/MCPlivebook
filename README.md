@@ -22,7 +22,7 @@ A Docker setup for running [Livebook](https://livebook.dev/) with [livebook_tool
 
 ```bash
 git clone <this-repo>
-cd livebook-docker
+cd MCPlivebook
 
 # Build and start the container
 docker compose up -d --build
@@ -47,7 +47,7 @@ The MCP server allows AI assistants to interact with your Livebook sessions.
 Add the MCP server to Claude Code:
 
 ```bash
-claude mcp add livebook_docker /path/to/livebook-docker/scripts/mcp-docker.sh
+claude mcp add livebook_docker /path/to/MCPlivebook/scripts/mcp-docker.sh
 ```
 
 Or add manually to your Claude settings (`~/.claude/settings.json`):
@@ -56,7 +56,7 @@ Or add manually to your Claude settings (`~/.claude/settings.json`):
 {
   "mcpServers": {
     "livebook_docker": {
-      "command": "/path/to/livebook-docker/scripts/mcp-docker.sh",
+      "command": "/path/to/MCPlivebook/scripts/mcp-docker.sh",
       "args": []
     }
   }
@@ -73,7 +73,7 @@ Add to your Cursor MCP settings (`.cursor/mcp.json` or global settings):
 {
   "mcpServers": {
     "livebook_docker": {
-      "command": "/path/to/livebook-docker/scripts/mcp-docker.sh",
+      "command": "/path/to/MCPlivebook/scripts/mcp-docker.sh",
       "args": []
     }
   }
