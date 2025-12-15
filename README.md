@@ -47,7 +47,7 @@ The MCP server allows AI assistants to interact with your Livebook sessions.
 Add the MCP server to Claude Code:
 
 ```bash
-claude mcp add livebook_docker /path/to/livebook-docker/mcp-docker.sh
+claude mcp add livebook_docker /path/to/livebook-docker/scripts/mcp-docker.sh
 ```
 
 Or add manually to your Claude settings (`~/.claude/settings.json`):
@@ -56,7 +56,7 @@ Or add manually to your Claude settings (`~/.claude/settings.json`):
 {
   "mcpServers": {
     "livebook_docker": {
-      "command": "/path/to/livebook-docker/mcp-docker.sh",
+      "command": "/path/to/livebook-docker/scripts/mcp-docker.sh",
       "args": []
     }
   }
@@ -73,7 +73,7 @@ Add to your Cursor MCP settings (`.cursor/mcp.json` or global settings):
 {
   "mcpServers": {
     "livebook_docker": {
-      "command": "/path/to/livebook-docker/mcp-docker.sh",
+      "command": "/path/to/livebook-docker/scripts/mcp-docker.sh",
       "args": []
     }
   }
@@ -108,9 +108,11 @@ Configure in `docker-compose.yml`:
 .
 ├── Dockerfile              # Docker image definition
 ├── docker-compose.yml      # Container orchestration
-├── docker-entrypoint.sh    # Container startup script
-├── watch-all.sh            # Auto-watcher for notebooks
-├── mcp-docker.sh           # MCP server wrapper script
+├── scripts/
+│   ├── docker-entrypoint.sh    # Container startup script
+│   ├── watch-all.sh            # Auto-watcher for notebooks
+│   ├── mcp-docker.sh           # MCP server wrapper script
+│   └── watch-docker.sh         # Manual watcher script
 └── notebooks/              # Your .livemd files
 ```
 
@@ -176,7 +178,7 @@ ports:
 ### MCP server not working
 
 1. Ensure the container is running: `docker compose ps`
-2. Test the MCP server: `echo '{"jsonrpc":"2.0","method":"initialize","params":{},"id":1}' | ./mcp-docker.sh`
+2. Test the MCP server: `echo '{"jsonrpc":"2.0","method":"initialize","params":{},"id":1}' | ./scripts/mcp-docker.sh`
 3. Restart Claude Code/Cursor after adding MCP configuration
 
 ## License

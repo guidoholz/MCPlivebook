@@ -1,0 +1,33 @@
+# Bjoern
+
+```elixir
+Mix.install([
+  {:kino, "~> 0.14"}
+])
+```
+
+## Hello World Dialog
+
+```elixir
+frame = Kino.Frame.new()
+```
+
+```elixir
+Kino.Frame.render(frame, Kino.Markdown.new("**Waiting for updates from Claude...**"))
+```
+
+```elixir
+# This cell will be updated by Claude
+message = "🎉 UPDATE #1: The watcher is working! I just changed this message from Claude Code."
+Kino.Frame.render(frame, Kino.Markdown.new("## Message from Claude\n\n#{message}\n\n*Updated at: #{DateTime.utc_now()}*"))
+```
+
+## Interactive Dialog
+
+```elixir
+hello_frame = Kino.Frame.new()
+```
+
+```elixir
+Kino.Frame.render(hello_frame, Kino.Markdown.new("# 👋 Hello World!\n\nGreetings from Claude Code!"))
+```

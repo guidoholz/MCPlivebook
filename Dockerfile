@@ -40,8 +40,8 @@ WORKDIR /data/notebooks
 EXPOSE 8080
 
 # Start scripts
-COPY docker-entrypoint.sh /usr/local/bin/
-COPY watch-all.sh /usr/local/bin/
+COPY scripts/docker-entrypoint.sh /usr/local/bin/
+COPY scripts/watch-all.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh /usr/local/bin/watch-all.sh
 
 ENTRYPOINT ["docker-entrypoint.sh"]
